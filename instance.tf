@@ -4,7 +4,7 @@ resource "aws_instance" "test" {
   key_name = "terraform"
   count = "${var.instance_count}"
   subnet_id = "${aws_subnet.dev.id}"
-  security_groups = ["${aws_security_group.dev.id}"]
+  vpc_security_group_ids = ["${aws_security_group.dev.id}"]
   associate_public_ip_address = "true"
   tags {
       Name = "${var.environment}${count.index +1}"
